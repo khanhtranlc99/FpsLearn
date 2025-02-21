@@ -31,7 +31,16 @@ public class Bullet : MonoBehaviour
     {
         if(collision != null)
         {
-            SimplePool2.Despawn(this.gameObject);
+            if(collision.gameObject.GetComponent<BotBase>() != null )
+            {
+                collision.gameObject.GetComponent<BotBase>().TakeDame(10);
+                 SimplePool2.Despawn(this.gameObject);
+            }
+            else
+            {
+              SimplePool2.Despawn(this.gameObject);
+            }
+           
         }
     }
 }
